@@ -1,0 +1,19 @@
+<?php
+
+$conf['db']['type'] = 'mysql';
+$conf['db']['host'] = '';
+$conf['db']['name'] = '';
+$conf['db']['user'] = '';
+$conf['db']['pass'] = '';
+$conf['db']['table_prefix'] = '';
+
+$conf['app']['default_handler'] = 'home';
+$conf['request_handler']['login'] = 'uteid';
+$conf['app']['user_class'] = 'Dase_DBO_User';
+
+$conf['auth']['superuser']['pkeane'] = 'ok';
+$conf['auth']['token'] = 'auth';
+$conf['auth']['ppd_token'] = "ppd";
+$conf['auth']['service_token'] = "service";
+$conf['auth']['serviceuser']['test'] = 'ok';
+

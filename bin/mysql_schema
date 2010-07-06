@@ -1,0 +1,98 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:3306
+-- Generation Time: Jul 05, 2010 at 11:48 PM
+-- Server version: 5.0.77
+-- PHP Version: 5.1.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `pkeane_hdportal`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL auto_increment,
+  `text` varchar(200) collate utf8_unicode_ci NOT NULL,
+  `ascii_id` varchar(200) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exercise`
+--
+
+CREATE TABLE `exercise` (
+  `id` int(11) NOT NULL auto_increment,
+  `creator_eid` varchar(200) collate utf8_unicode_ci NOT NULL,
+  `title` varchar(200) collate utf8_unicode_ci NOT NULL,
+  `media_file` varchar(400) collate utf8_unicode_ci default NULL,
+  `media_mime_type` varchar(50) collate utf8_unicode_ci default NULL,
+  `media_file_title` varchar(200) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exercise_category`
+--
+
+CREATE TABLE `exercise_category` (
+  `id` int(11) NOT NULL auto_increment,
+  `exercise_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exercise_email`
+--
+
+CREATE TABLE `exercise_email` (
+  `id` int(11) NOT NULL auto_increment,
+  `text` varchar(400) collate utf8_unicode_ci NOT NULL,
+  `exercise_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exercise_line`
+--
+
+CREATE TABLE `exercise_line` (
+  `id` int(11) NOT NULL auto_increment,
+  `text` text collate utf8_unicode_ci NOT NULL,
+  `exercise_id` int(11) NOT NULL,
+  `correct_sort_order` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment,
+  `eid` varchar(200) character set latin1 NOT NULL,
+  `name` varchar(200) character set latin1 NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+
+
