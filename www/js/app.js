@@ -4,6 +4,7 @@ $(document).ready(function() {
 	App.initDelete('topMenu');
 	App.initDelete('emails');
 	App.initDelete('categories');
+	App.initDelete('orphans');
 	App.initToggle('itemlist');
 	App.initSortable('lines');
 	App.initPlayer();
@@ -19,7 +20,7 @@ App.initSubmission = function() {
 		var url = $(this).attr('action');
 		var lineset = '';
 		$('#lines li').each(function() {
-			lineset += $(this).attr('class')+'|';
+			lineset += $(this).attr('id')+'|';
 		});
 		if (confirm('are you sure?')) {
 			var _o = {

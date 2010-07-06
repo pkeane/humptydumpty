@@ -59,7 +59,7 @@
 					{if $request->user->categories}
 					<li><h2>My Exercises By Category</h2></li>
 						{foreach item=cat from=$request->user->categories}
-						<li><a href="category/{$cat->id}">{$cat->text}</a></li>
+						<li><a href="category/{$cat->id}/exercises">{$cat->text}</a></li>
 						{/foreach}
 					{/if}
 				</ul>

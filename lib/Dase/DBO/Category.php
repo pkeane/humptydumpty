@@ -4,7 +4,7 @@ require_once 'Dase/DBO/Autogen/Category.php';
 
 class Dase_DBO_Category extends Dase_DBO_Autogen_Category 
 {
-	public $exercises;
+	public $exercises = array();
 
 	public function getExercises() {
 		$exercat = new Dase_DBO_ExerciseCategory($this->db);

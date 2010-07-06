@@ -3,7 +3,8 @@
 class Dase_Handler_Category extends Dase_Handler
 {
 	public $resource_map = array(
-		'{id}' => 'exercises',
+		'{id}' => 'category',
+		'{id}/exercises' => 'exercises',
 	);
 
 	protected function setup($r)
@@ -15,6 +16,18 @@ class Dase_Handler_Category extends Dase_Handler
 		} else {
 			$this->is_superuser = false;
 		}
+	}
+
+	public function deleteCategory($r)
+	{
+		$cat = new Dase_DBO_Category($this->db);
+		$cat->load($r->get('id'));
+		if (0 == count($cat->getExercises())) {
+			$cat->delete();
+		} else {
+			$r->respond('403');
+		}
+		$r->renderOk();
 	}
 
 	public function getExercises($r) 

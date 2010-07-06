@@ -4,7 +4,7 @@
 <ul class="menu">
 	<li><h2>Exercises By Category</h2></li>
 	{foreach item=cat from=$categories}
-	<li><a href="category/{$cat->id}">{$cat->text}</a></li>
+	<li><a href="category/{$cat->id}/exercises">{$cat->text}</a></li>
 	{/foreach}
 </ul>
 {/block}

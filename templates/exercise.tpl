@@ -4,7 +4,7 @@
 <ul class="menu">
 	<li><h2>Exercises By Category</h2></li>
 	{foreach item=cat from=$categories}
-	<li><a href="category/{$cat->id}">{$cat->text}</a></li>
+	<li><a href="category/{$cat->id}/exercises">{$cat->text}</a></li>
 	{/foreach}
 </ul>
 {/block}
@@ -44,7 +44,7 @@
 	<h1 dir="rtl" lang="he">Exercise: {$exercise->title}</h1>
 	<ul dir="rtl" class="lines" id="lines">
 		{foreach item=line from=$exercise->lines}
-		<li	class="{$line->id}" lang="he" dir="rtl">{$line->text}</li>
+		<li	id="{$line->id}" lang="he" dir="rtl">{$line->text}</li>
 		{/foreach}
 	</ul>
 	<form id="submission" dir="rtl" method="post" action="exercise/{$exercise->id}/submission">
