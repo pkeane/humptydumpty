@@ -79,6 +79,10 @@ a:hover {
 	color: #c17d63;
 }
 
+form {
+	margin-bottom: 24px;
+}
+
 form.note input[type="submit"] {
 	margin-top: 0px;
 }
@@ -306,6 +310,26 @@ textarea {
 	width: 438px;
 	height: 200px;
 	padding: 6px;
+}
+
+textarea[name="instructions"] {
+	width: 438px;
+	height: 100px;
+	padding: 6px;
+}
+
+div.instructions {
+	margin: 10px 0;
+	width: 480px;
+	padding: 6px 12px 12px 12px;
+	border: 1px solid #ddd;
+	background-color: #eee;
+	font-style: italic;
+}
+
+div.instructions h3 {
+	font-style: normal;
+	margin: 0  0 8px 0 ;
 }
 
 .control input[type="submit"] {

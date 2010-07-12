@@ -59,6 +59,13 @@
 			<input type="submit" name="remove" value="remove media file"></p>
 		</form>
 
+		<form method="post" action="exercise/{$exercise->id}/instructions">
+			<p>
+			<label for="text">Enter instructions for the exercise.</label>
+			<textarea name="instructions" class="exercise_instructions">{$exercise->instructions}</textarea>
+			<input type="submit" value="set/update exercise instructions"></p>
+		</form>
+
 		<form id="add_category" method="post" action="exercise/{$exercise->id}/category">
 			<label for="categories">Add a Category:</label>
 			<input type="text" class="long" name="category">

@@ -40,6 +40,13 @@
 <div dir="rtl" lang="he" id="title">{$exercise->media_file_title}</div>
 {/if}
 
+{if $exercise->instructions}
+<div class="instructions">
+	<h3>Instructions</h3>
+	{$exercise->instructions|markdown}
+</div>
+{/if}
+
 <div class="exercise">
 	<h1 dir="rtl" lang="he">Exercise: {$exercise->title}</h1>
 	<ul dir="rtl" class="lines" id="lines">

@@ -6,6 +6,7 @@ class Dase_Handler_Exercise extends Dase_Handler
 		'create' => 'exercise_create_form',
 		'{id}' => 'exercise',
 		'{id}/lines' => 'exercise_lines',
+		'{id}/instructions' => 'exercise_instructions',
 		'{id}/media' => 'exercise_media',
 		'{id}/email' => 'exercise_email',
 		'{id}/submission' => 'exercise_submission',
@@ -156,6 +157,16 @@ class Dase_Handler_Exercise extends Dase_Handler
 				$line->insert();
 			}
 		}
+		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
+	}
+
+
+	public function postToExerciseInstructions($r) 
+	{
+		$exercise = new Dase_DBO_Exercise($this->db);
+		$exercise->load($r->get('id'));
+		$exercise->instructions = $r->get('instructions');
+		$exercise->update();
 		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
 	}
 
