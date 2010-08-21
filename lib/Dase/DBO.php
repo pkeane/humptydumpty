@@ -1,9 +1,6 @@
 <?php
 require_once 'Dase/DB.php';
 
-/* this class implements the ActiveRecord pattern
- */
-
 class Dase_DBO_Exception extends Exception {}
 
 class Dase_DBO implements IteratorAggregate
@@ -332,39 +329,6 @@ class Dase_DBO implements IteratorAggregate
 		$sth->execute($bind);
 		//Dase_Log::debug(LOG_FILE,'DB ERROR: '.print_r($sth->errorInfo(),true));
 		return $sth->fetchColumn();
-	}
-
-	public static function query($db,$sql,$params=array(),$return_object=false)
-	{
-		$dbh = $db->getDbh();
-		$sth = $dbh->prepare($sql);
-		if (!$sth) {
-			$errs = $dbh->errorInfo();
-			if (isset($errs[2])) {
-				throw new Dase_DBO_Exception('could not create handle: '.$errs[2]);
-			}
-		}
-		if ($return_object) {
-			$sth->setFetchMode(PDO::FETCH_OBJ);
-		} else {
-			$sth->setFetchMode(PDO::FETCH_ASSOC);
-		}
-
-		//logging
-		foreach ($params as $bp) {
-			$sql = preg_replace('/\?/',"'$bp'",$sql,1);
-		}
-		Dase_Log::debug(LOG_FILE,"----------------------------");
-		Dase_Log::debug(LOG_FILE,"[DBO query]".$sql);
-		Dase_Log::debug(LOG_FILE,"----------------------------");
-
-		if (!$sth->execute($params)) {
-			$errs = $sth->errorInfo();
-			if (isset($errs[2])) {
-				throw new Dase_DBO_Exception('could not execute query: '.$errs[2]);
-			}
-		} 
-		return $sth;
 	}
 
 	function update()

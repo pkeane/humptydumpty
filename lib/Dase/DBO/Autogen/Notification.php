@@ -9,11 +9,11 @@ require_once 'Dase/DBO.php';
  * 
  */
 
-class Dase_DBO_Autogen_User extends Dase_DBO 
+class Dase_DBO_Autogen_Notification extends Dase_DBO 
 {
 	public function __construct($db,$assoc = false) 
 	{
-		parent::__construct($db,'user', array('eid','name','email','instructor_eid','is_instructor','is_admin'));
+		parent::__construct($db,'notification', array('recipient','student_eid','timestamp','exercise_title','set_title','ordered_lines'));
 		if ($assoc) {
 			foreach ( $assoc as $key => $value) {
 				$this->$key = $value;

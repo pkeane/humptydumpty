@@ -10,12 +10,31 @@ Class Dase_Http
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 		curl_setopt($ch, CURLOPT_USERPWD,$user.':'.$pass);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
 		if ($mime_type) {
 			$headers  = array(
 				"Content-Type: $mime_type"
 			);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		}
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$result = curl_exec($ch);
+		$info = curl_getinfo($ch);
+		curl_close($ch);  
+		if ('200' == $info['http_code']) {
+			return 'ok';
+		} else {
+			return $result;
+		}
+	}
+
+	public static function delete($url,$user,$pass)
+	{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+		curl_setopt($ch, CURLOPT_USERPWD,$user.':'.$pass);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$result = curl_exec($ch);
 		$info = curl_getinfo($ch);
@@ -34,6 +53,7 @@ Class Dase_Http
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 		curl_setopt($ch, CURLOPT_USERPWD,$user.':'.$pass);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
 		if ($mime_type) {
 			$headers  = array(
 				"Content-Type: $mime_type"
@@ -64,7 +84,7 @@ Class Dase_Http
 		$info = curl_getinfo($ch);
 		curl_close($ch);  
 		// returns status code && response body
-		return array($info['http_code'],$result);
+		return array($info['http_code'],$result,$info);
 	}
 }
 

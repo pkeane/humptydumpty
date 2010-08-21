@@ -5,9 +5,11 @@ abstract class Dase_File
 	public static $types_map = array(
 		'application/msword' => array('size' => 'doc', 'ext' => 'doc','class'=>'Dase_File_Doc'),
 		'application/pdf' => array('size' => 'pdf', 'ext' => 'pdf','class'=>'Dase_File_Pdf'),
+		'application/vnd.google-earth.kml+xml' => array('size' => 'kml', 'ext' => 'kml','class'=>'Dase_File_Text'),
 		'application/xml' => array('size' => 'xml', 'ext' => 'xml','class'=>'Dase_File_Text'),
 		'application/xslt+xml' => array('size' => 'xslt', 'ext' => 'xsl','class'=>'Dase_File_Image'),
 		'audio/mpeg' => array('size' => 'mp3', 'ext' => 'mp3','class'=>'Dase_File_Audio'),
+		'audio/x-mpeg' => array('size' => 'mp3', 'ext' => 'mp3','class'=>'Dase_File_Audio'),
 		'audio/mpg' => array('size' => 'mp3', 'ext' => 'mp3','class'=>'Dase_File_Audio'),
 		'audio/ogg' => array('size' => 'oga', 'ext' => 'oga','class'=>'Dase_File_Audio'),
 		'image/gif' => array('size' => 'gif', 'ext' => 'gif','class'=>'Dase_File_Image'),
@@ -53,6 +55,15 @@ abstract class Dase_File
 			$this->filename = $path_parts['filename']; // since PHP 5.2.0
 		} else {
 			$this->filename = str_replace("." . $this->extension,'',$path_parts['basename']);
+		}
+	}
+
+	static function getExtension($mime_type)
+	{
+		if (isset(Dase_File::$types_map[$mime_type])) {
+			return Dase_File::$types_map[$mime_type]['ext'];
+		} else {
+			return false;
 		}
 	}
 
@@ -129,10 +140,13 @@ abstract class Dase_File
 				LIMIT 1
 				";
 			$hash = $metadata['md5'];
-			$res = Dase_DBO::query($this->db,$sql,array($c->id,'admin_checksum',$hash),true)->fetch();
-			if ($res && $res->value_text) {
+			$dbh = $this->db->getDbh();
+			$sth = $dbh->prepare($sql);
+			$sth->execute(array($c->id,'admin_checksum',$hash));
+			$row = $sth->fetch();
+			if ($row && $row['value_text']) {
 				throw new Exception('duplicate file');
-			} 
+			}
 		}
 
 		$subdir =  Dase_Util::getSubdir($item->serial_number);
@@ -253,6 +267,7 @@ abstract class Dase_File
 		$media_file->height = 80;
 		$media_file->mime_type = 'image/jpeg';
 		$media_file->size = 'thumbnail';
+		$media_file->file_size = filesize($target);
 		$media_file->p_collection_ascii_id = $collection->ascii_id;
 		$media_file->p_serial_number = $item->serial_number;
 		$media_file->insert();
@@ -275,6 +290,7 @@ abstract class Dase_File
 		$media_file->height = 80;
 		$media_file->mime_type = 'image/jpeg';
 		$media_file->size = 'viewitem';
+		$media_file->file_size = filesize($target);
 		$media_file->p_collection_ascii_id = $collection->ascii_id;
 		$media_file->p_serial_number = $item->serial_number;
 		$media_file->insert();

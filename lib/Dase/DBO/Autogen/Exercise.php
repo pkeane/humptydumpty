@@ -13,7 +13,7 @@ class Dase_DBO_Autogen_Exercise extends Dase_DBO
 {
 	public function __construct($db,$assoc = false) 
 	{
-		parent::__construct($db,'exercise', array('creator_eid','title','media_file','media_mime_type','media_file_title','instructions'));
+		parent::__construct($db,'exercise', array('creator_eid','title','media_file','media_mime_type','media_file_title','instructions','exercise_set_id','sort_order_in_set'));
 		if ($assoc) {
 			foreach ( $assoc as $key => $value) {
 				$this->$key = $value;

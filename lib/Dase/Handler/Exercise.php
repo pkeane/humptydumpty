@@ -6,14 +6,14 @@ class Dase_Handler_Exercise extends Dase_Handler
 		'create' => 'exercise_create_form',
 		'{id}' => 'exercise',
 		'{id}/lines' => 'exercise_lines',
+		'{id}/title' => 'exercise_title',
 		'{id}/instructions' => 'exercise_instructions',
 		'{id}/media' => 'exercise_media',
-		'{id}/email' => 'exercise_email',
 		'{id}/submission' => 'exercise_submission',
 		'{id}/category' => 'exercise_category',
-		'{id}/email/{email_id}' => 'exercise_email',
 		'{id}/category/{category_id}' => 'exercise_category',
 		'{id}/edit' => 'exercise_edit',
+		'{id}/set' => 'exercise_set',
 	);
 
 	protected function setup($r)
@@ -21,17 +21,15 @@ class Dase_Handler_Exercise extends Dase_Handler
 		if ('json' != $r->format) {
 			$this->user = $r->getUser();
 			$this->user->getExercises();
-			if ($this->user->isSuperuser($r->superusers)) {
-				$this->is_superuser = true;
-			} else {
-				//	$r->renderError(401);
-			}
+			$this->user->getSets();
 		}
 	}
 
 	public function getExerciseCreateForm($r) 
 	{
 		$t = new Dase_Template($r);
+		$sets = new Dase_DBO_ExerciseSet($this->db);
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
 		$r->renderResponse($t->fetch('exercise_create.tpl'));
 	}
 
@@ -39,8 +37,59 @@ class Dase_Handler_Exercise extends Dase_Handler
 	{
 		$ex = new Dase_DBO_Exercise($this->db);
 		$ex->load($r->get('id'));
-		$lines = $r->getBody();
-		$r->renderResponse('thanks. you submitted '.$lines);
+		$set = $ex->getSet();
+		$correct = $ex->getCorrect();
+		$lines = trim($r->getBody());
+
+		$lines_set = explode('|',$lines);
+		$ordered_lines = '';
+		foreach ($lines_set as $line_id) {
+			$l = new Dase_DBO_ExerciseLine($this->db);
+			$l->load($line_id);
+			$ordered_lines .= $l->text."\n";
+		}
+
+		$instructor = $this->user->getInstructor();
+		if ($instructor) {
+			$email = $instructor->email;
+		} else {
+			$creator = $ex->getCreator();
+			$email = $creator->email;
+		}
+
+		$notification = new Dase_DBO_Notification($this->db);
+		$notification->timestamp = date(DATE_ATOM);
+		$notification->recipient = $email;
+		$notification->student_eid = $this->user->eid;
+		$notification->exercise_title = $ex->title;
+		$notification->set_title = $set->title;
+		$notification->ordered_lines = $ordered_lines;
+		$notification->insert();
+
+		if ($lines == $correct) {
+			$result = "correct answer";
+		} else {
+			$result = "incorrect answer";
+		}
+		$email_header = 'From: Humpty Dumpty Portal'."\r\n";
+		$email_header .= 'Cc: pkeane@mail.utexas.edu' . "\r\n";
+		$email_subject = "Humpty Dumpty Portal Exercise Submission";
+		$email_body = "student: ".$this->user->name." (".$this->user->eid.")\n";
+		$email_body .= "exercise : $ex->title from set $set->title\n";
+		$email_body .= "\n$result\n";
+		$email_body .= "\nordered_lines:\n\n$ordered_lines\n";
+		mail($email,$email_subject,$email_body,$email_header);
+
+		$r->renderResponse($email.' will be notified');
+	}
+
+	public function postToExerciseSet($r) 
+	{
+		$ex = new Dase_DBO_Exercise($this->db);
+		$ex->load($r->get('id'));
+		$ex->exercise_set_id = $r->get('set_id');
+		$ex->update();
+		$r->renderRedirect("exercise/$ex->id/edit");
 	}
 
 	public function postToExerciseCreateForm($r) 
@@ -48,6 +97,7 @@ class Dase_Handler_Exercise extends Dase_Handler
 		$ex = new Dase_DBO_Exercise($this->db);
 		$ex->title = $r->get('title');
 		$ex->creator_eid = $this->user->eid;
+		$ex->exercise_set_id = $r->get('exercise_set_id');
 		$id = $ex->insert();
 		$r->renderRedirect('exercise/'.$id.'/edit');
 	}
@@ -60,23 +110,10 @@ class Dase_Handler_Exercise extends Dase_Handler
 			$r->renderRedirect('home');
 		}
 		$ex->getLines(true);
-		$ex->getCategories();
-		$ex->getEmails();
-		$cats= new Dase_DBO_Category($this->db);
-		$cats->orderBy('text');
-		$t->assign('categories',$cats->findAll());
+		$t->assign('set',$ex->getSet());
 		$t->assign('exercise',$ex);
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
 		$r->renderResponse($t->fetch('exercise.tpl'));
-	}
-
-	public function deleteExerciseEmail($r)
-	{
-		$exercise = new Dase_DBO_Exercise($this->db);
-		$exercise->load($r->get('id'));
-		$email = new Dase_DBO_ExerciseEmail($this->db);
-		$email->load($r->get('email_id'));
-		$email->delete();
-		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
 	}
 
 	public function deleteExerciseCategory($r)
@@ -110,30 +147,13 @@ class Dase_Handler_Exercise extends Dase_Handler
 		$data = Dase_Json::toPhp($resp[1]);
 		$t->assign('feed',$data);
 
-
-		// all emails
-		$set = array();
-		$emails = new Dase_DBO_ExerciseEmail($this->db);
-		foreach ($emails->findAll(1) as $e) {
-			$set[] = $e->text;
-		}
-		if (count($set)) {
-			$set = array_unique($set);
-			sort($set);
-			$t->assign('emails',$set);
-		}
-
 		// all categories
 		$cset = array();
-		$categories = new Dase_DBO_Category($this->db);
-		$categories->orderBy('text');
-		$t->assign('categories',$categories->findAll());
-
 		$ex->getCreator();
 		$ex->getLines();
-		$ex->getCategories();
-		$ex->getEmails();
+		$ex->getSet();
 		$t->assign('exercise',$ex);
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
 		$r->renderResponse($t->fetch('exercise_edit.tpl'));
 	}
 
@@ -157,6 +177,17 @@ class Dase_Handler_Exercise extends Dase_Handler
 				$line->insert();
 			}
 		}
+		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
+	}
+
+	public function postToExerciseTitle($r) 
+	{
+		$exercise = new Dase_DBO_Exercise($this->db);
+		$exercise->load($r->get('id'));
+		if ($r->get('title')) {
+			$exercise->title = $r->get('title');
+		}
+		$exercise->update();
 		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
 	}
 
@@ -211,17 +242,6 @@ class Dase_Handler_Exercise extends Dase_Handler
 		$exercat->category_id = $category->id;
 		$exercat->insert();
 
-		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
-	}
-
-	public function postToExerciseEmail($r) 
-	{
-		$exercise = new Dase_DBO_Exercise($this->db);
-		$exercise->load($r->get('id'));
-		$email = new Dase_DBO_ExerciseEmail($this->db);
-		$email->text = $r->get('email');
-		$email->exercise_id = $exercise->id;
-		$email->insert();
 		$r->renderRedirect('exercise/'.$exercise->id.'/edit');
 	}
 

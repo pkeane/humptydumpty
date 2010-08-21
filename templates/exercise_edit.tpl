@@ -34,11 +34,20 @@
 <div class="exercise">
 	<h1 dir="rtl" lang="he">Exercise: {$exercise->title}</h1>
 	<div id="exerciseForms">
+		<form method="post" action="exercise/{$exercise->id}/title">
+			<p>
+			<label for="title">Title</label>
+			<input lang="he" dir="rtl" name="title" value="{$exercise->title}">
+			<input type="submit" value="update">
+			</p>
+		</form>
+
 		<form method="post" action="exercise/{$exercise->id}/lines">
 			<p>
 			<label for="text">Enter the text of the exercise.</label>
 			<textarea lang="he" dir="rtl" name="text" class="exercise_text">{$exercise->str_lines}</textarea>
-			<input type="submit" value="set/update exercise text"></p>
+			<input type="submit" value="set/update exercise text">
+			</p>
 		</form>
 
 		<form method="post" action="exercise/{$exercise->id}/media">
@@ -47,7 +56,7 @@
 				<ul>
 					{foreach from=$feed.items item=item}
 					<li>
-					<input type="radio" name="media_file" class="{$item.metadata.title[0]}" value="{$feed.app_root}{$item.media.enclosure}">
+					<input type="radio" name="media_file" class="{$item.metadata.title[0]}" value="{$feed.app_root}{$item.enclosure.href}">
 					<img src="{$feed.app_root}{$item.media.thumbnail}">
 					<span class="label">{$item.metadata.title[0]}</span>
 					</li>
@@ -66,53 +75,25 @@
 			<input type="submit" value="set/update exercise instructions"></p>
 		</form>
 
-		<form id="add_category" method="post" action="exercise/{$exercise->id}/category">
-			<label for="categories">Add a Category:</label>
-			<input type="text" class="long" name="category">
-			<input type="submit" value="add">
-			<p class="quick-select">
-			<select name="js-only">
+		<form id="add_set" method="post" action="exercise/{$exercise->id}/set">
+			<label for="set_id">Associate Exercise with Exercise Set (currently: {$exercise->set->title})</label>
+			<select name="set_id">
 				<option>select:</option>
-				{foreach item=category from=$categories}
-				<option>{$category->text}</option>
+				{foreach item=set from=$request->user->admin_sets}
+				<option value="{$set->id}">{$set->title}</option>
+				{/foreach}
+				<option value="">-----------------</option>
+				{foreach item=set from=$request->user->sets}
+				<option value="{$set->id}">{$set->title}</option>
 				{/foreach}
 			</select>
-			</p>
-			<ul id="categories">
-				{foreach item=category from=$exercise->categories}
-				<li>{$category->text} <a href="exercise/{$exercise->id}/category/{$category->id}" class="delete">[x]</a></li>
-				{/foreach}
-			</ul>
+			<input type="submit" value="save">
 		</form>
-
-		<form id="add_email" method="post" action="exercise/{$exercise->id}/email">
-			<label for="emails">Add an Email Address:</label>
-			<input type="text" class="long" name="email">
-			<input type="submit" value="add">
-			<p class="quick-select">
-			<select name="js-only">
-				<option>select:</option>
-				{foreach item=email from=$emails}
-				<option>{$email}</option>
-				{/foreach}
-			</select>
-			</p>
-			<ul id="emails">
-				{foreach item=email from=$exercise->emails}
-				<li>{$email->text} <a href="exercise/{$exercise->id}/email/{$email->id}" class="delete">[x]</a></li>
-				{/foreach}
-			</ul>
-		</form>
-	</div>
-	<div class="control">
 		<a href="exercise/{$exercise->id}">view exercise</a>
+		<form action="exercise/{$exercise->id}" method="delete">
+			<input type="submit" value="delete this exercise">
+		</form>
 	</div>
-	<div class="spacer"></div>
-</div>
-<div class="control">
-	<form action="exercise/{$exercise->id}" method="delete">
-		<input type="submit" value="delete this exercise">
-	</form>
 </div>
 {/block}
 

@@ -1,17 +1,21 @@
 {extends file="layout.tpl"}
 
 {block name="content"}
-<h1>New Exercise Form</h1>
-<div class="main">
+<div class="exercises_admin">
+	<h1>Manage/Create Exercises</h1>
+	<h3>create a new exercise</h3>
 	<form id="exerciseShortForm" action="exercise/create" class="shortForm" method="post" >
-		<p>
-		<label for="title">Exercise Title</label>
+		<label for="title">title</label>
 		<input class="long" type="text" name="title" />
-		</p>
-		<p>
-		<input type="submit" value="start new exercise"/>
-		</p>
+		<input type="submit" value="create exercise"/>
 	</form>
+
+	<h3>my exercises</h3>
+	<ul class="my_exercises">
+		{foreach item=ex from=$request->user->exercises}
+		<li><a href="exercise/{$ex->id}">{$ex->title}</a></li>
+		{/foreach}
+	</ul>
 </div>
 {/block}
 

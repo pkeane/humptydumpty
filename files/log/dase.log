@@ -793,3 +793,116 @@
 2010-05-12T21:36:41-05:00 | pid: 32458 : redirecting to http://dev.laits.utexas.edu/dev_pkeane/hdportal/home
 2010-05-12T21:36:43-05:00 | pid: 32458 : no such handler class Dase_Handler_Www redirecting
 2010-05-12T21:36:43-05:00 | pid: 32458 : redirecting to http://dev.laits.utexas.edu/dev_pkeane/hdportal/home
+2010-07-20T16:50:03-05:00 | pid: 17547 : [DBO find] SELECT * FROM exercise
+2010-07-20T16:50:06-05:00 | pid: 17548 : [DBO find] SELECT * FROM exercise
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '31' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// pkeane,test,,,,,1,31
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '7' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// hensonjr,Stretching,https://dase.laits.utexas.edu/media/hdportal/mp3/000828742.mp3,audio/mp3,000828263.mp3,0,,7
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '8' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Alef:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file.  Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,8
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '9' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Bet:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,9
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '10' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Gimel:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,10
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '11' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Dalet:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,11
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '12' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Heh:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,12
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '13' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Vav:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,13
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '14' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Zayin:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,14
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '15' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Chet:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,15
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '16' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Tet:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,16
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '17' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,8,17
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '18' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Alef:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,18
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '19' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Bet:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,19
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '20' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Gimel:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,20
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '21' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Dalet:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,21
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '22' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Tet-Vav:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,22
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '24' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Tet-Zayin:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,24
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '25' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Zayin:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,25
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '26' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Chet:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,26
+2010-07-20T16:56:31-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '27' LIMIT 1
+2010-07-20T16:56:31-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Yod-Tet:  Ruth,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,27
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '28' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Unit Kaf:  Yoni,,,,Listen to the sound file, and re-arrange the sentences by moving them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,9,28
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '29' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Alef-Bet: 1,,,,Study the segments and re-arrange them so that they appear in exact alphabetical order.  Once you are certain that you have re-arranged the segments correctly, click the "submit answer" button!  ,10,29
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '30' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Alef-Bet:  2,,,,Study the segments and re-arrange them so that they appear in exact alphabetical order.  Once you are certain that you have re-arranged the segments correctly, click the "submit answer" button!,10,30
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '33' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Alef-Bet: 3,,,,Study the segments and re-arrange them so that they appear in exact alphabetical order.  Once you are certain that you have re-arranged the segments correctly, click the "submit answer" button!,10,33
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '34' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Alef-Bet: 4,,,,Study the segments and re-arrange them so that they appear in exact alphabetical order. Once you are certain that you have re-arranged the segments correctly, click the "submit answer" button!,10,34
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '35' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// pkeane,new test,,,,,,35
+2010-07-20T16:56:32-05:00 | pid: 17572 : [DBO find] SELECT * FROM exercise_category WHERE exercise_id = '36' LIMIT 1
+2010-07-20T16:56:32-05:00 | pid: 17572 : UPDATE exercise SET creator_eid = ?,title = ?,media_file = ?,media_mime_type = ?,media_file_title = ?,instructions = ?,exercise_set_id = ? WHERE id=? /// raizenel,Humpty Dumpty 1,,,,This exercise illustrates the main use of the Humpty Dumpty portal.  Run the sound file-- you will hear the Humpty Dumpty nursery rhyme, translated into Hebrew by Aharon Amir.  Listen to the poem (as many times as you need), and re-arrange the sentences by clicking on them and dragging them up or down, so that the written text matches the text in the sound file. Once you are certain that you have re-arranged the sentences correctly, click the "submit answer" button!,11,36
+2010-07-20T17:00:01-05:00 | pid: 17622 : [DBO find] SELECT * FROM exercise
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 1
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:01-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:02-05:00 | pid: 17622 : SELECT * FROM exercise_set WHERE id=:id /// 11
+2010-07-20T17:00:29-05:00 | pid: 17636 : [DBO find] SELECT * FROM exercise
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 1
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 8
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 9
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 10
+2010-07-20T17:00:29-05:00 | pid: 17636 : SELECT * FROM exercise_set WHERE id=:id /// 11

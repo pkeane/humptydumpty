@@ -1,16 +1,16 @@
 {extends file="layout.tpl"}
 
 {block name="content"}
-<div id="homeContent">
+<div>
 	<h1>Administration</h1>
-	<h3>orphan categories</h3>
-	<ul id="orphans">
-		{foreach item=cat from=$orphan_categories}
-		<li>
-		<a href="category/{$cat->id}">{$cat->text}</a>
-		<a href="category/{$cat->id}" class="delete">[x]</a>
-		</li>
-		{/foreach}
+	<ul class="operations">
+		<li><a href="user/settings">my user settings</a></li>
+		{if $request->user->is_admin}
+		<li><a href="directory">add an instructor</a></li>
+		<li><a href="admin/users">grant/remove instructor privileges</a></li>
+		{/if}
+		<li><a href="admin/set_form">manage/create sets</a></li>
+		<li><a href="exercise/create">manage/create exercises</a></li>
 	</ul>
 </div>
 {/block}

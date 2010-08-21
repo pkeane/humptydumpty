@@ -1,14 +1,5 @@
 {extends file="layout.tpl"}
 
-{block name="sidebar"}
-<ul class="menu">
-	<li><h2>Exercises By Category</h2></li>
-	{foreach item=cat from=$categories}
-	<li><a href="category/{$cat->id}/exercises">{$cat->text}</a></li>
-	{/foreach}
-</ul>
-{/block}
-
 {block name="head-meta"}
 <meta name="media-file" content="{$exercise->media_file}">
 {/block}
@@ -42,6 +33,7 @@
 
 {if $exercise->instructions}
 <div class="instructions">
+	<a href="" id="close" class="controls">[x]</a>
 	<h3>Instructions</h3>
 	{$exercise->instructions|markdown}
 </div>
@@ -54,15 +46,13 @@
 		<li	id="{$line->id}" lang="he" dir="rtl">{$line->text}</li>
 		{/foreach}
 	</ul>
-	<form id="submission" dir="rtl" method="post" action="exercise/{$exercise->id}/submission">
+	<form id="submission" method="post" action="exercise/{$exercise->id}/submission">
 		<input type="submit" value="submit answer">
 	</form>
-</div>
 
-{if $exercise->creator_eid == $request->user->eid}
-<div class="control">
-<a href="exercise/{$exercise->id}/edit">edit exercise</a>
+	{if $exercise->creator_eid == $request->user->eid }
+	<a href="exercise/{$exercise->id}/edit">edit exercise</a>
+	{/if}
 </div>
-{/if}
 {/block}
 

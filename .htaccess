@@ -4,7 +4,7 @@ Options FollowSymLinks
 FileETag none
 
 RewriteEngine On
-RewriteBase  /hdportal  
+RewriteBase  /humptydumptyportal  
 
 php_flag magic_quotes_gpc off
 

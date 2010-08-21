@@ -20,15 +20,6 @@ class Utlookup
 			'title' => 'title',
 			'unit' => 'ou'
 		);
-		/*
-		$attributes = array(
-			'email' => 'mail',
-			'name' => 'cn',
-			'office' => 'utexasedupersonofficelocation',
-			'phone' => 'telephonenumber',
-			'unit' => 'ou'
-		);
-		 */
 		if ($ldap_result) {
 			$entry_array = ldap_get_entries($x500, $ldap_result);
 			for ($i=0; $i < count($entry_array) - 1;$i++) {
