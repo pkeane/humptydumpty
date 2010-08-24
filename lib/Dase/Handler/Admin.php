@@ -9,6 +9,7 @@ class Dase_Handler_Admin extends Dase_Handler
 		'set_form' => 'set_form',
 		'add_instructor_form/{eid}' => 'add_instructor_form',
 		'instructors' => 'instructors',
+		'content/{page}' => 'content_form',
 		'set/{id}' => 'set',
 		'set/{id}/title' => 'set_title',
 		'set/{id}/exercise_sorter' => 'exercise_sorter',
@@ -25,6 +26,36 @@ class Dase_Handler_Admin extends Dase_Handler
 		} else {
 			$r->renderError(401);
 		}
+	}
+
+	public function getContentForm($r)
+	{
+		$t = new Dase_Template($r);
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$c = new Dase_DBO_Content($this->db);
+		$c->page = $r->get('page');
+		if ($c->findOne()) {
+		$t->assign('content',$c->text);
+		}
+		$t->assign('page',$r->get('page'));
+		$r->renderResponse($t->fetch('admin_content_form.tpl'));
+	}
+
+	public function postToContentForm($r)
+	{
+		$t = new Dase_Template($r);
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$c = new Dase_DBO_Content($this->db);
+		$c->page = $r->get('page');
+		if ($c->findOne()) {
+			$c->text = $r->get('text');
+			$c->update();
+		} else {
+			$c->text = $r->get('text');
+			$c->insert();
+		}
+		$page = $r->get('page');
+		$r->renderRedirect('admin/content/'.$page);
 	}
 
 	public function deleteSetInstructor($r)

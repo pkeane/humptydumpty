@@ -2,6 +2,9 @@
 
 {block name="content"}
 <div id="homeContent">
-	<p>Welcome to the Humpty Dumpty Portal</p>
+	<h1>Welcome to the Humpty Dumpty Portal</h1>
+	<p>
+	{$content|markdown}
+	</p>
 </div>
 {/block}

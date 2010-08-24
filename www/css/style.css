@@ -478,3 +478,9 @@ span.hint {
 .section {
 	margin: 20px 0;
 }
+
+div#homeContent p {
+	margin: 20px 0;
+	text-align: justify;
+	font-size: 14px;
+}

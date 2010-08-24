@@ -8,6 +8,7 @@
 		{if $request->user->is_admin}
 		<li><a href="directory">add an instructor</a></li>
 		<li><a href="admin/users">grant/remove instructor privileges</a></li>
+		<li><a href="admin/content/home">edit front page text</a></li>
 		{/if}
 		<li><a href="admin/set_form">manage/create sets</a></li>
 		<li><a href="exercise/create">manage/create exercises</a></li>
