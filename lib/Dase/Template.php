@@ -92,6 +92,11 @@ class Dase_Template {
 		return $ret;
 	}
 
+	public function init($handler)
+	{
+		return $handler->initTemplate($this);
+	}
+
 	public function display($resource_name)
 	{
 		echo $this->fetch($resource_name);

@@ -484,3 +484,14 @@ div#homeContent p {
 	text-align: justify;
 	font-size: 14px;
 }
+
+h4.download_link {
+	margin: 15px 0;
+}
+h4.download_link a {
+	color: #633;
+}
+h3.msg {
+	margin: 15px 0;
+	color: #900;
+}

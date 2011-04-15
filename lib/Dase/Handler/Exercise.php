@@ -68,8 +68,11 @@ class Dase_Handler_Exercise extends Dase_Handler
 
 		if ($lines == $correct) {
 			$result = "correct answer";
+			$alert = "You answered correctly :)\n\n$email will be notified\n";
 		} else {
 			$result = "incorrect answer";
+			//$alert = "Sorry, you had some errors. Try Again!\n\n$email will be notified\n";
+			$alert = "Sorry, still broken - there's always next time!\n\n$email will be notified\n";
 		}
 		$email_header = 'From: Humpty Dumpty Portal'."\r\n";
 		$email_header .= 'Cc: pkeane@mail.utexas.edu' . "\r\n";
@@ -80,7 +83,7 @@ class Dase_Handler_Exercise extends Dase_Handler
 		$email_body .= "\nordered_lines:\n\n$ordered_lines\n";
 		mail($email,$email_subject,$email_body,$email_header);
 
-		$r->renderResponse($email.' will be notified');
+		$r->renderResponse($alert);
 	}
 
 	public function postToExerciseSet($r) 

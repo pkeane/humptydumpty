@@ -7,12 +7,54 @@ class Dase_Handler_Set extends Dase_Handler
 		'{id}/title' => 'title',
 		'{id}/delete_queue' => 'delete_queue',
 		'{id}/exercise/{exercise_id}' => 'exercise',
+		'{id}/download_all' => 'download_all',
 	);
 
 	protected function setup($r)
 	{
 		$this->user = $r->getUser();
 		$this->user->getExercises();
+	}
+
+	public function getDownloadAll($r) 
+	{
+		$set = new Dase_DBO_ExerciseSet($this->db);
+		$set->load($r->get('id'));
+		//ZIP stuff
+		$zip = new ZipArchive();
+		$target_dir = "/tmp/humptydumpty_zip";
+		if (!file_exists($target_dir)) {
+			if (!mkdir($target_dir)) {
+				$r->renderError(500);
+			}
+		}
+		$filename = $target_dir.'/'.$set->ascii_id.".zip";
+		if (file_exists($filename)) {
+			unlink($filename);
+		}
+		if ($zip->open($filename, ZIPARCHIVE::CREATE)!==TRUE) {
+			$r->renderError(401,'cannot create zip');
+		}
+		$exercises = $set->getExercises();
+		$has_media = 0;
+		foreach ($exercises as $ex) {
+			if ($ex->media_file) {
+				$ex_ascii = Dase_Util::dirify($ex->title);
+				$fn = $target_dir.'/exercise-'.$ex_ascii;
+				file_put_contents($fn,file_get_contents($ex->media_file));
+				if (filesize($fn)) {
+					$zip->addFile($fn,$set->ascii_id.'/'.$ex_ascii.'.mp3');
+					$has_media = 1;
+				}
+			}
+		}
+		$zip->close();
+		if (!$has_media) {
+			$params['msg'] = $set->title.' has no associated media';
+			$r->renderRedirect('set/'.$set->id,$params);
+		}
+		//todo: need to set a cron job to garbage collect the set in media/tmp
+		$r->serveFile($filename,'application/zip',true);
 	}
 
 	public function postToDeleteQueue($r)

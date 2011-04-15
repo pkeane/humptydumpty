@@ -28,10 +28,15 @@ class Dase_Handler_Admin extends Dase_Handler
 		}
 	}
 
+	public function initTemplate($t)
+	{
+		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+	}
+
 	public function getContentForm($r)
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$t->init($this);
 		$c = new Dase_DBO_Content($this->db);
 		$c->page = $r->get('page');
 		if ($c->findOne()) {
@@ -44,7 +49,7 @@ class Dase_Handler_Admin extends Dase_Handler
 	public function postToContentForm($r)
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$t->init($this);
 		$c = new Dase_DBO_Content($this->db);
 		$c->page = $r->get('page');
 		if ($c->findOne()) {
@@ -104,7 +109,7 @@ class Dase_Handler_Admin extends Dase_Handler
 	public function getAddInstructorForm($r) 
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$t->init($this);
 		$record = Utlookup::getRecord($r->get('eid'));
 		$u = new Dase_DBO_User($this->db);
 		$u->eid = $r->get('eid');
@@ -154,14 +159,14 @@ class Dase_Handler_Admin extends Dase_Handler
 	public function getAdmin($r) 
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$t->init($this);
 		$r->renderResponse($t->fetch('admin.tpl'));
 	}
 
 	public function getSetForm($r) 
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
+		$t->init($this);
 		$this->user->getSets();
 		$r->renderResponse($t->fetch('admin_set_form.tpl'));
 	}
@@ -169,8 +174,7 @@ class Dase_Handler_Admin extends Dase_Handler
 	public function getUsers($r) 
 	{
 		$t = new Dase_Template($r);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
-		$this->user->getSets();
+		$t->init($this);
 		$users = new Dase_DBO_User($this->db);
 		$users->orderBy('name');
 		$t->assign('users', $users->findAll(1));
@@ -180,6 +184,7 @@ class Dase_Handler_Admin extends Dase_Handler
 	public function getSet($r) 
 	{
 		$t = new Dase_Template($r);
+		$t->init($this);
 		$set = new Dase_DBO_ExerciseSet($this->db);
 		$set->load($r->get('id'));
 		if ($set->creator_eid != $this->user->eid) {
@@ -188,7 +193,6 @@ class Dase_Handler_Admin extends Dase_Handler
 		$set->getUsers();
 		$set->getExercises();
 		$t->assign('set',$set);
-		$t->assign('exercise_sets',Dase_DBO_ExerciseSet::getAll($this->db));
 		$this->user->getSets();
 		$instructors = new Dase_DBO_User($this->db);
 		$instructors->is_instructor = true;
@@ -202,7 +206,7 @@ class Dase_Handler_Admin extends Dase_Handler
 		$set = new Dase_DBO_ExerciseSet($this->db);
 		if ($r->get('title')) {
 			$set->title = $r->get('title');
-			$set->ascii_id = Dase_Util::dirify($set->text);
+			$set->ascii_id = Dase_Util::dirify($set->title);
 			$set->creator_eid = $this->user->eid;
 			$set->insert();
 		}

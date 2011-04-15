@@ -85,6 +85,10 @@ class Dase_Handler {
 	{
 	}
 
+	public function initTemplate($t)
+	{
+	}
+
 			
 }
 

@@ -9,5 +9,6 @@
 		<li><a href="exercise/{$ex->id}">{$ex->title}</a></li>
 		{/foreach}
 	</ul>
+	<h4 class="download_link"><a href="set/{$set->id}/download_all">[download all audio files]</a></h4>
 </div>
 {/block}
